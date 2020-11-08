@@ -18,17 +18,12 @@ module.exports.productList = async function productList(ctx, next) {
     query.subcategory = ctx.request.subcategory;
   }
   const products = await Product.find(query);
-  ctx.body = {
-    products: products.map((category) => {
-      return category.toObject();
-    }),
-  };
-  return next();
+  ctx.body = {products};
 };
 
 module.exports.productById = async function productById(ctx) {
   const product = await Product.findById(ctx.params.id);
   if (!product) ctx.throw(404, 'product not found');
-  ctx.body = {product: product.toObject()};
+  ctx.body = {product};
 };
 

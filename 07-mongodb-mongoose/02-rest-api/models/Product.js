@@ -36,5 +36,8 @@ const productSchema = new mongoose.Schema({
 productSchema.set('toObject', {
   transform: transformDefaultParams,
 });
+productSchema.set('toJSON', {
+  transform: transformDefaultParams,
+});
 
 module.exports = connection.model('Product', productSchema);
