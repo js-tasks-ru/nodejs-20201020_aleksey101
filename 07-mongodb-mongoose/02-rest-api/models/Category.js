@@ -12,6 +12,9 @@ const subCategorySchema = new mongoose.Schema({
 subCategorySchema.set('toObject', {
   transform: transformDefaultParams,
 });
+subCategorySchema.set('toJSON', {
+  transform: transformDefaultParams,
+});
 
 const categorySchema = new mongoose.Schema({
   title: {
@@ -23,6 +26,9 @@ const categorySchema = new mongoose.Schema({
 });
 
 categorySchema.set('toObject', {
+  transform: transformDefaultParams,
+});
+categorySchema.set('toJSON', {
   transform: transformDefaultParams,
 });
 
