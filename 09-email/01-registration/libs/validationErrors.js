@@ -13,7 +13,7 @@ module.exports = async function handleMongooseValidationError(ctx, next) {
     }
 
     ctx.body = {
-      errors: errors,
+      errors,
     };
   }
 };
