@@ -21,7 +21,20 @@ const messageSchema = new mongoose.Schema({
     type: Date,
     required: true,
   },
+});
 
+const transformDefaultParams = (doc, ret) => {
+  ret.id = ret._id;
+  delete ret._id;
+  delete ret.__v;
+  delete ret.chat;
+};
+
+messageSchema.set('toObject', {
+  transform: transformDefaultParams,
+});
+messageSchema.set('toJSON', {
+  transform: transformDefaultParams,
 });
 
 module.exports = connection.model('Message', messageSchema);
